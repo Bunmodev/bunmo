@@ -3,12 +3,12 @@ import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
 const baseUrl = import.meta.env.PUBLIC_SITE; // or import.meta.env.SITE if configured
-const imageUrl = frontmatter.image?.url
+const isValidUrl = typeof frontmatter.image?.url === "string";
+
+const imageUrl = isValidUrl
   ? baseUrl + frontmatter.image.url
-  : baseUrl + "og-image.png";
+  : baseUrl + "/og-image.png"; // add a slash here
 
-
-console.log(imageUrl)
 ---
 
 <BaseLayout 
