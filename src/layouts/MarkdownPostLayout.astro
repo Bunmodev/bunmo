@@ -2,7 +2,11 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-const ogImage = frontmatter.image?.url ? `/${frontmatter.image.url}` : '/og-image.png'
+const baseUrl = import.meta.env.SITE; // or import.meta.env.SITE if configured
+const imageUrl = frontmatter.image?.url
+  ? baseUrl + frontmatter.image.url
+  : baseUrl + "og-image.png";
+
 ---
 
 <BaseLayout 
@@ -10,7 +14,7 @@ const ogImage = frontmatter.image?.url ? `/${frontmatter.image.url}` : '/og-imag
   pageDescription={frontmatter.description}
   tags={frontmatter.tags}
 	author={frontmatter.author}
-	image={ogImage} // fallback image
+	image={imageUrl} // fallback image
 >
     <main class="max-w-3xl mx-auto px-4 py-10 space-y-8 bg-base-100">
       <div class="breadcrumbs text-sm">
