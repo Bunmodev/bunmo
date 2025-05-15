@@ -5,7 +5,16 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 const allPosts = await getCollection("blog");
 const pageTitle = "Bunmodev | Blog";
 const pageDescription = "Discover tutorials, coding tips, and insights on software development, web development, and system design. Follow my learning journey as I share projects, resources, and advice for developers at all levels."
+const author = "bunmodev"
+const tags = ['BunmoDev', 'software developer', 'developer blog', 'coding journey', 'tech enthusiast']
+const image = '/og-image.png'
 ---
-<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+<BaseLayout 
+	pageTitle={pageTitle} 
+	pageDescription={pageDescription}
+	tags={tags}
+	author={author}
+	image={image}
+>
   <BlogList posts={allPosts} />
 </BaseLayout>

@@ -3,10 +3,9 @@ import { getCollection } from 'astro:content';
 import BlogPost from '../../components/BlogPost.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-
 export async function getStaticPaths() {
-    const allPosts = await getCollection("blog");
-    const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+  const allPosts = await getCollection("blog");
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post) =>
@@ -19,22 +18,37 @@ export async function getStaticPaths() {
   });
 }
 
-
-
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
+
+// 👇 Improve title and description with tag context
+const pageTitle = `${capitalizedTag} Posts | Bunmodev Blog`;
+const pageDescription = `Explore posts tagged with "${capitalizedTag}" covering tutorials, tips, and developer insights about ${capitalizedTag}, web development, and coding.`;
+
+// SEO-relevant image, tags, and author info
+const image = '/og-image.png';
+const author = "bunmodev";
 ---
-<BaseLayout pageTitle={tag}>
-    <p>Posts tagged with {tag}</p>
-    <div class="w-full min-h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-      {posts.map((post: any) => (
-        <BlogPost
-          id={post.id}
-          title={post.data.title}
-          description={post.data.description}
-          date={post.data.date}
-          image={post.data.image}
-        />
-      ))}
-    </div>
+
+<BaseLayout 
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  tags={[tag]} // should be an array for consistency
+  author={author}
+  image={image}
+>
+  <h1 class="text-2xl font-bold mb-4">Posts tagged with <span class="text-blue-500">#{capitalizedTag}</span></h1>
+  <div class="w-full min-h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {posts.map((post: any) => (
+      <BlogPost
+        id={post.id}
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date}
+        image={post.data.image}
+      />
+    ))}
+  </div>
 </BaseLayout>

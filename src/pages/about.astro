@@ -3,10 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Bunmodev | About";
 const pageDescription = "Join me on my journey of learning software development, web development, system design, and coding. Follow along as I explore new technologies, share tutorials, and showcase projects, offering insights into the world of coding for beginners and beyond."
-
+const author = "bunmodev"
+const tags = ['BunmoDev', 'software developer', 'developer blog', 'coding journey', 'tech enthusiast']
+const image = '/og-image.png'
 ---
 
-<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+<BaseLayout 
+	pageTitle={pageTitle} 
+	pageDescription={pageDescription}
+	tags={tags}
+	author={author}
+	image={image}
+>
     <div class="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
       <div class="max-w-2xl">
         <h1 class="text-3xl font-bold mb-4">About Me</h1>
@@ -27,5 +35,5 @@ const pageDescription = "Join me on my journey of learning software development,
         </div>
       </div>
     </div>
-  </BaseLayout>
+</BaseLayout>
   
