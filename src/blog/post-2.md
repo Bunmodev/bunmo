@@ -4,14 +4,14 @@ pubDate: 2025-05-14
 description: Learn full-stack web development from scratch with this beginner-friendly tutorial series. We’ll explore the MERN and PERN stacks step by step — covering frontend, backend, databases, and deployment.
 author: Bunmodev
 image:
-  url: src/blog/assets/post2_0001.png
+  url: /post2_0001.png
   alt: Techstacks image.
 tags:
   - web
   - tutorial
   - react
 ---
-![](assets/post2_0001.png)
+![](/post2_0001.png)
 
 If you've spent some time learning to code, you've probably heard the term **“tech stack”** thrown around in tutorials, job posts, or startup discussions. But what exactly does it mean — and why does everyone talk about it like it’s a big deal?
 

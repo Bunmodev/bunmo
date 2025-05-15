@@ -10,7 +10,7 @@ const { frontmatter } = Astro.props;
   pageDescription={frontmatter.description}
   tags={frontmatter.tags}
 	author={frontmatter.author}
-	image={ '/' + frontmatter.image.url}
+	image={ '/' + frontmatter.image.url} // dynamic og image not working
 >
     <main class="max-w-3xl mx-auto px-4 py-10 space-y-8 bg-base-100">
       <div class="breadcrumbs text-sm">

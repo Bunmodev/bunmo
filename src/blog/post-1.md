@@ -4,7 +4,7 @@ pubDate: 2025-05-09
 description: Jump into this journey of software development with me and learn your next coding skills
 author: Bunmodev
 image:
-  url: src/blog/assets/og-image.png
+  url: /og-image.png
   alt: bunmodev blog banner
 tags:
   - astro
@@ -20,7 +20,7 @@ For a long time, I’ve wanted a space to document my thoughts, experiments, and
 **BunmoDev** is my attempt at creating a digital garden for everything I build and explore.
 
 
-![](assets/20250509_221338_scifi1.png)
+![](/og-image.png)
 
 ## 🧠 What This Blog Is About
 
