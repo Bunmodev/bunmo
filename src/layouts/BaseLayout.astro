@@ -4,11 +4,16 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import '../styles/global.css'
 
-const { pageTitle, pageDescription, author, tags = [], image } = Astro.props;
+const { pageTitle, pageDescription, author, tags = [], image, imageAlt } = Astro.props;
 const siteUrl = "https://bunmodev.netlify.app"; // Replace with your actual site URL
 const pageUrl = siteUrl + Astro.url.pathname;
-const ogImage = image ? siteUrl + image : siteUrl + "/og-image.png"; // Replace with your actual OG image
+
+// Properly handle image URL construction - make sure we don't double up the base URL
+const ogImage = image 
+  ? (image.startsWith('http') ? image : siteUrl + image) 
+  : siteUrl + "/og-image.png";
 ---
+
 <!doctype html>
 <html lang="en" data-theme="bloglight">
   <head>
@@ -25,24 +30,24 @@ const ogImage = image ? siteUrl + image : siteUrl + "/og-image.png"; // Replace 
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="alternate" type="application/rss+xml" title="BunmoDev RSS Feed" href="/rss.xml">
-
+    
     <!-- Canonical URL -->
     <link rel="canonical" href={pageUrl} />
-
+    
     <!-- ✅ Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content={image?.alt ?? "Blog image"} />
-
+    <meta property="og:image:alt" content={imageAlt || "Blog image"} />
+    
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
-
+    
     <title>{pageTitle}</title>
     <ClientRouter />
   </head>
