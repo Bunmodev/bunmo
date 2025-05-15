@@ -4,8 +4,8 @@ pubDate: 2025-05-09
 description: Jump into this journey of software development with me and learn your next coding skills
 author: Bunmodev
 image:
-  url: https://docs.astro.build/assets/rose.webp
-  alt: The Astro logo on a dark background with a pink glow.
+  url: src/blog/assets/og-image.png
+  alt: bunmodev blog banner
 tags:
   - astro
   - blogging

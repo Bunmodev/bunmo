@@ -4,8 +4,8 @@ pubDate: 2025-05-14
 description: Learn full-stack web development from scratch with this beginner-friendly tutorial series. We’ll explore the MERN and PERN stacks step by step — covering frontend, backend, databases, and deployment.
 author: Bunmodev
 image:
-  url: https://docs.astro.build/assets/rose.webp
-  alt: The Astro logo on a dark background with a pink glow.
+  url: src/blog/assets/post2_0001.png
+  alt: Techstacks image.
 tags:
   - web
   - tutorial

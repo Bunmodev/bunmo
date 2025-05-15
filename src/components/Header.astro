@@ -1,10 +1,19 @@
+---
+import { Image } from "astro:assets";
+---
+
 <header class="navbar bg-base-100 border-b shadow-sm sticky top-0 z-50 font-header">
     <div class="container mx-auto px-4 flex justify-between items-center w-full">
   
       <!-- Logo & Site Name -->
       <div class="">
         <a href="/" class="flex items-center space-x-2">
-          <img src="/wordmark-transparent.png" alt="BunmoDev Logo" data-rounded="false" class="h-16 w-auto" />
+          <Image 
+            src="/wordmark-transparent.png" alt="BunmoDev Logo" data-rounded="false" 
+            width={64} height={100} 
+            class="h-16 w-auto" 
+            loading={'eager'}
+          />
         </a>
       </div>
   

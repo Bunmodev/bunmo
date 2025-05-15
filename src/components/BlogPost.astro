@@ -23,13 +23,7 @@ const { id, title, description, date, image } = Astro.props;
       {title}
     </h2>
 
-    <img src={image.url} width={200} height={100} alt={image.alt} class="w-full h-full rounded-sm"/>
-
-    <!-- {description && (
-      <p class="text-sm text-base-content/70 leading-relaxed text-ellipsis">
-        {description}
-      </p>
-    )} -->
+    <img src={image.url} width={200} height={100} alt={title} class="w-full h-full rounded-sm"/>
 
     {date && (
       <div class="pt-2">

@@ -12,4 +12,5 @@ export default defineConfig({
   },
 
   adapter: netlify(),
+  site: 'https://bunmodev.netlify.app'
 });
