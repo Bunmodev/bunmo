@@ -2,7 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-const baseUrl = import.meta.env.SITE; // or import.meta.env.SITE if configured
+const baseUrl = import.meta.env.PUBLIC_SITE; // or import.meta.env.SITE if configured
 const imageUrl = frontmatter.image?.url
   ? baseUrl + frontmatter.image.url
   : baseUrl + "og-image.png";
