@@ -3,10 +3,10 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import '../styles/global.css'
 
-const { pageTitle, pageDescription } = Astro.props;
+const { pageTitle, pageDescription, author, tags, image } = Astro.props;
 const siteUrl = "https://bunmodev.netlify.com"; // Replace with your actual site URL
 const pageUrl = siteUrl + Astro.url.pathname;
-const ogImage = `${siteUrl}/og-image.png`; // Replace with your actual OG image
+const ogImage = image ? siteUrl + image : siteUrl + "/og-image.png"; // Replace with your actual OG image
 ---
 <!doctype html>
 <html lang="en" data-theme="bloglight">
@@ -14,6 +14,8 @@ const ogImage = `${siteUrl}/og-image.png`; // Replace with your actual OG image
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="author" content={author} />
+    <meta name="keywords" content={tags.join(", ")} />
     <meta name="description" content={pageDescription} />
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -25,12 +27,13 @@ const ogImage = `${siteUrl}/og-image.png`; // Replace with your actual OG image
     <!-- Canonical URL -->
     <link rel="canonical" href={pageUrl} />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <!-- ✅ Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={image?.alt ?? "Blog image"} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
