@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  id: string
+  title: string
+  description?: string
+  date?: string
+  image: {
+    url: string;
+    alt: string
+  }
+}
+
+const { id, title, description, date, image } = Astro.props;
+
+
+---
+
+<article class="card border border-base-300 bg-base-100 shadow-sm hover:shadow-md transition duration-200 max-w-xl min-h-56 h-full">
+  <a href={`/posts/${id}/`} class="card-body space-y-2">
+    <h2 class="card-title text-base-content text-lg md:text-xl font-semibold font-header">
+      {title}
+    </h2>
+
+    <img src={image.url} width={200} height={100} alt={image.alt} class="w-full h-full rounded-sm"/>
+
+    <!-- {description && (
+      <p class="text-sm text-base-content/70 leading-relaxed text-ellipsis">
+        {description}
+      </p>
+    )} -->
+
+    {date && (
+      <div class="pt-2">
+        <span class="badge badge-ghost text-xs text-base-content/60">
+          {new Date(date).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          })}
+        </span>
+      </div>
+    )}
+  </a>
+</article>

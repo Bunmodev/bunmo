@@ -1,0 +1,32 @@
+---
+import BlogPost from "./BlogPost.astro"
+
+interface Post {
+  id: string
+  data: {
+    title: string
+    description: string
+    date: string
+    image: {
+      url: string;
+      alt: string;
+    }
+  }
+}
+
+const { posts } = Astro.props;
+
+
+---
+
+<div class="w-full min-h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+  {posts.map((post: Post) => (
+    <BlogPost
+      id={post.id}
+      title={post.data.title}
+      description={post.data.description}
+      date={post.data.date}
+      image={post.data.image}
+    />
+  ))}
+</div>

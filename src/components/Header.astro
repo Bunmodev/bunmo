@@ -1,0 +1,36 @@
+<header class="navbar bg-base-100 border-b shadow-sm sticky top-0 z-50 font-header">
+    <div class="container mx-auto px-4 flex justify-between items-center w-full">
+  
+      <!-- Logo & Site Name -->
+      <div class="">
+        <a href="/" class="flex items-center space-x-2">
+          <img src="/wordmark-transparent.png" alt="BunmoDev Logo" data-rounded="false" class="h-16 w-auto" />
+        </a>
+      </div>
+  
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-4">
+        <a class="btn btn-ghost btn-sm" href="/">Home</a>
+        <a class="btn btn-ghost btn-sm" href="/blog">Blog</a>
+        <a class="btn btn-ghost btn-sm" href="/about">About</a>
+      </nav>
+  
+      <!-- Mobile Dropdown (optional) -->
+      <div class="dropdown dropdown-end md:hidden">
+        <div tabindex="0" class="btn btn-ghost btn-circle">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+  
+    </div>
+  </header>
+  

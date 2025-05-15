@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Bunmodev | About";
+const pageDescription = "Join me on my journey of learning software development, web development, system design, and coding. Follow along as I explore new technologies, share tutorials, and showcase projects, offering insights into the world of coding for beginners and beyond."
+
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <div class="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold mb-4">About Me</h1>
+        <p class="text-base text-gray-500 mb-6">
+          Hey I’m Bunmodev, a software developer documenting my journey into software, web development, and system design. I share what I learn, build small tools, and write about useful concepts along the way.
+        </p>
+  
+        <div class="flex gap-4 justify-center">
+          <a href="https://github.com/Bunmodev" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            GitHub
+          </a>
+          <a href="https://twitter.com/Bunmodev" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            Twitter
+          </a>
+          <a href="mohbundid1@gmail.com" class="btn btn-sm btn-outline">
+            Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </BaseLayout>
+  

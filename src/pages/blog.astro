@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import BlogList from '../components/BlogList.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
+const allPosts = await getCollection("blog");
+const pageTitle = "Bunmodev | Blog";
+const pageDescription = "Discover tutorials, coding tips, and insights on software development, web development, and system design. Follow my learning journey as I share projects, resources, and advice for developers at all levels."
+---
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <BlogList posts={allPosts} />
+</BaseLayout>
