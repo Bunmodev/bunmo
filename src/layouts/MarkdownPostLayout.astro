@@ -2,12 +2,12 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-const baseUrl = import.meta.env.PUBLIC_SITE; // or import.meta.env.SITE if configured
+const baseUrl = import.meta.env.SITE; // or import.meta.env.SITE if configured
 const isValidUrl = typeof frontmatter.image?.url === "string";
 
-const imageUrl = isValidUrl
-  ? baseUrl + frontmatter.image.url
-  : baseUrl + "/og-image.png"; // add a slash here
+const imagePath = typeof frontmatter.image?.url === "string" 
+  ? frontmatter.image.url  // Just the path, not a full URL
+  : "/og-image.png"; 
 
 ---
 
@@ -16,7 +16,7 @@ const imageUrl = isValidUrl
   pageDescription={frontmatter.description}
   tags={frontmatter.tags}
 	author={frontmatter.author}
-	image={imageUrl} // fallback image
+	image={imagePath} // fallback image
 >
     <main class="max-w-3xl mx-auto px-4 py-10 space-y-8 bg-base-100">
       <div class="breadcrumbs text-sm">
