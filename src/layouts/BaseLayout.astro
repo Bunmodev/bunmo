@@ -8,10 +8,19 @@ const { pageTitle, pageDescription, author, tags = [], image, imageAlt } = Astro
 const siteUrl = "https://bunmodev.netlify.app"; // Replace with your actual site URL
 const pageUrl = siteUrl + Astro.url.pathname;
 
-// Properly handle image URL construction - make sure we don't double up the base URL
-const ogImage = image 
-  ? (image.startsWith('http') ? image : siteUrl + image) 
-  : siteUrl + "/og-image.png";
+// More robust image URL handling that checks if image is a string first
+let ogImage = siteUrl + "/og-image.png"; // Default fallback
+
+if (image) {
+  // Check if image is a string and then check if it starts with http
+  if (typeof image === 'string') {
+    ogImage = image.startsWith('http') ? image : siteUrl + image;
+  } else if (image.url) {
+    // Handle case where image is an object with url property
+    ogImage = image.url.startsWith('http') ? image.url : siteUrl + image.url;
+  }
+  // If image is neither a string nor has a url property, we keep the default
+}
 ---
 
 <!doctype html>

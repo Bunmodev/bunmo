@@ -2,13 +2,15 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-const baseUrl = import.meta.env.SITE; // or import.meta.env.SITE if configured
-const isValidUrl = typeof frontmatter.image?.url === "string";
-
-const imagePath = typeof frontmatter.image?.url === "string" 
-  ? frontmatter.image.url  // Just the path, not a full URL
-  : "/og-image.png"; 
-
+// Handle both possible image formats
+let imagePath;
+if (typeof frontmatter.image === 'string') {
+  imagePath = frontmatter.image;
+} else if (frontmatter.image?.url) {
+  imagePath = frontmatter.image.url;
+} else {
+  imagePath = "/og-image.png"; // Default fallback
+}
 ---
 
 <BaseLayout 
