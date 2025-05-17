@@ -4,7 +4,7 @@ pubDate: 2025-05-09
 description: Jump into this journey of software development with me and learn your next coding skills
 author: Bunmodev
 image:
-  url: /og-image.png
+  url: '/og-image.png'
   alt: bunmodev blog banner
 tags:
   - astro

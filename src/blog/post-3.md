@@ -4,7 +4,7 @@ pubDate: 2025-05-14
 description: Learn the key differences between Type and Interface in TypeScript. This simple guide helps you understand when and why to use each, with a focus on their core differences and use cases.
 author: Bunmodev
 image:
-  url: /post-3.png
+  url: '/post-3.png'
   alt: typescript types vs interfaces
 tags:
   - web

@@ -2,66 +2,56 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-// Handle both possible image formats
-let imagePath;
-if (typeof frontmatter.image === 'string') {
-  imagePath = frontmatter.image;
-} else if (frontmatter.image?.url) {
-  imagePath = frontmatter.image.url;
-} else {
-  imagePath = "/og-image.png"; // Default fallback
-}
 ---
 
-<BaseLayout 
+<BaseLayout
   pageTitle={frontmatter.title} 
   pageDescription={frontmatter.description}
   tags={frontmatter.tags}
 	author={frontmatter.author}
-	image={imagePath} // fallback image
+	image={frontmatter?.image?.url}
+  imageAlt={frontmatter.image.alt}
 >
-    <main class="max-w-3xl mx-auto px-4 py-10 space-y-8 bg-base-100">
-      <div class="breadcrumbs text-sm">
-        <ul>
-          <li><a href="/">home</a></li>
-          <li><a href="/blog">blog</a></li>
-          <li>{frontmatter.title}</li>
-        </ul>
-      </div>
+<main class="max-w-3xl mx-auto px-4 py-10 space-y-8 bg-base-100">
+  <div class="breadcrumbs text-sm">
+    <ul>
+      <li><a href="/">home</a></li>
+      <li><a href="/blog">blog</a></li>
+      <li>{frontmatter.title}</li>
+    </ul>
+  </div>
 
-        <!-- Blog Title -->
-        <h1 class="text-3xl md:text-4xl font-bold font-header text-base-content">
-          {frontmatter.title}
-        </h1>
-      
-        <!-- Author & Date -->
-        <div class="text-sm text-base-content/60 flex items-center justify-between gap-4">
-          {frontmatter.author && (
-            <span>✍️ {frontmatter.author}</span>
-          )}
-          {frontmatter.pubDate && (
-            <span>📅 {new Date(frontmatter.pubDate).toLocaleDateString(undefined, {
-              year: "numeric", month: "short", day: "numeric"
-            })}</span>
-          )}
-        </div>
-      
-        
-      
-        <!-- Markdown Content -->
-        <article class="prose max-w-none prose-base prose-headings:font-semibold prose-a:text-primary">
-          <slot />
-        </article>
+  <!-- Blog Title -->
+  <h1 class="text-3xl md:text-4xl font-bold font-header text-base-content">
+    {frontmatter.title}
+  </h1>
 
-        <!-- Tags (optional) -->
-        {frontmatter.tags && (
-          <div class="pt-2 flex flex-wrap gap-2">
-            {frontmatter.tags.map((tag: string) => (
-              <a href={`/tags/${tag}`} class="badge badge-soft badge-sm">{tag}</a>
-            ))}
-          </div>
-        )}
-      </main>      
+  <!-- Author & Date -->
+  <div class="text-sm text-base-content/60 flex items-center justify-between gap-4">
+    {frontmatter.author && (
+      <span>✍️ {frontmatter.author}</span>
+    )}
+    {frontmatter.pubDate && (
+      <span>📅 {new Date(frontmatter.pubDate).toLocaleDateString(undefined, {
+        year: "numeric", month: "short", day: "numeric"
+      })}</span>
+    )}
+  </div>
 
-      
+  
+
+  <!-- Markdown Content -->
+  <article class="prose max-w-none prose-base prose-headings:font-semibold prose-a:text-primary">
+    <slot />
+  </article>
+
+  <!-- Tags (optional) -->
+  {frontmatter.tags && (
+    <div class="pt-2 flex flex-wrap gap-2">
+      {frontmatter.tags.map((tag: string) => (
+        <a href={`/tags/${tag}`} class="badge badge-soft badge-sm">{tag}</a>
+      ))}
+    </div>
+  )}
+</main>      
 </BaseLayout>
