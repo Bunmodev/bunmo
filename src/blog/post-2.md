@@ -1,7 +1,7 @@
 ---
 title: What Is a Tech Stack? A Simple Guide for Beginners
 pubDate: 2025-05-14
-description: Learn what are techstacks and how to use them. We’ll explore the MERN and PERN in a quick dive — covering frontend, backend, databases, and deployment.
+description: Learn what are techstacks and how to use them by exploring the MERN and PERN in a quick dive
 author: Bunmodev
 image:
   url: '/post2_0001.png'
